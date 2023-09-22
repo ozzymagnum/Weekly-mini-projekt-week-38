@@ -2,7 +2,7 @@
 
 class Program
 {
-    
+    // Define a Product class to represent product information
     class Product
     {
         public string Category { get; set; }
@@ -11,14 +11,15 @@ class Program
 
         public override string ToString()
         {
-            return $"Category: {Category}, Product Name: {ProductName}, Price: {Price:C}";
+            return $"Category: {Category}\nProduct Name: {ProductName}\nPrice: {Price:C}\n";
         }
     }
 
     static void Main(string[] args)
     {
+        // Create a list to store product objects
         List<Product> products = new List<Product>();
-        decimal totalSum = 0; // Variable to store the total sum
+        decimal totalSum = 0; 
 
         while (true)
         {
@@ -27,35 +28,41 @@ class Program
             Console.WriteLine("To enter a new product - follow the steps  |  To quit - enter: Q ");
             Console.ForegroundColor = ConsoleColor.White;
 
+            //added variables
             string category, productName;
             decimal price;
 
             Console.Write("Enter a Category: ");
             category = Console.ReadLine();
 
+            // Check if the user wants to quit
             if (category.ToLower() == "q")
             {
-                break;
+                break; // Exit the loop if "q" is entered
             }
 
             Console.Write("Enter a Product Name: ");
             productName = Console.ReadLine();
 
+            // Check if the user wants to quit
             if (productName.ToLower() == "q")
             {
-                break;
+                break; // Exit the loop if "q" is entered
             }
 
+          
             Console.Write("Enter a Price: ");
             string priceInput = Console.ReadLine();
 
+            // Check if the user wants to quit
             if (priceInput.ToLower() == "q")
             {
-                break;
+                break; // Exit the loop if "q" is entered
             }
 
             if (decimal.TryParse(priceInput, out price))
             {
+                // Create a new Product object and add it to the list
                 Product newProduct = new Product
                 {
                     Category = category,
@@ -78,13 +85,14 @@ class Program
             Console.WriteLine("----------------------------------------------------------------");
         }
 
-        Console.WriteLine("\nList of Products Entered:");
+        // Display the list of entered products
+        Console.WriteLine("----------------------------------------------------------------");
         foreach (var product in products)
         {
             Console.WriteLine(product);
         }
-
-        Console.WriteLine($"\nTotal Sum of Product Prices: {totalSum:C}");
+        // Display the total sum of product prices
+        Console.WriteLine($"\nTotal Amount: {totalSum:C}");
     }
 }
 
@@ -92,28 +100,4 @@ class Program
 
 
 
-/*
 
-Product product1 = new Product("Electronic", "Computer", 1990);
-Product product2 = new Product("Electronic", "Dishwasher", 2500);
-Product product3 = new Product("Electronic", "Washingmachine", 3500);
-
-
-
-
-
-class Product
-{
-public Product(string category, string productName, int price)
-{
-Category = category;
-ProductName = productName;
-Price = price;
-}
-
-public string Category { get; set; }
-public string ProductName { get; set; }
-public int Price { get; set; }
-
-}
-*/
